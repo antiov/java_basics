@@ -1,6 +1,6 @@
 package entities;
 
-public class Person {
+public class Person implements SuperHuman{
     private String name;
     private String lastName;
 
@@ -18,5 +18,15 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean canRun() {
+        return false;
+    }
+
+    @Override
+    public boolean canFly() {
+        return false;
     }
 }
