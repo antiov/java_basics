@@ -13,8 +13,15 @@ class Checker implements Comparator<Player> {
         }
     }
 }
+class CheckerComparable implements Comparable<Player>{
 
-class Player{
+    @Override
+    public int compareTo(Player player) {
+        return 0;
+    }
+}
+
+class Player implements Comparable<Player>{
     String name;
     int score;
 
@@ -22,6 +29,21 @@ class Player{
         this.name = name;
         this.score = score;
     }
+
+    @Override
+    public int compareTo(Player o) {
+        return 0;
+    }
+}
+class PlayerNot{
+    String name;
+    int score;
+
+    PlayerNot(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+
 }
 
 class UsingComparator {
@@ -31,14 +53,22 @@ class UsingComparator {
         int n = scan.nextInt();
 
         Player[] player = new Player[n];
+        //PlayerNot[] playerNot = new PlayerNot[n];
         Checker checker = new Checker();
+        //CheckerComparable checkerCom = new CheckerComparable();
 
         for(int i = 0; i < n; i++){
             player[i] = new Player(scan.next(), scan.nextInt());
+            //playerNot[i] = new PlayerNot(scan.next(), scan.nextInt());
         }
         scan.close();
+        System.out.println("1." + player.toString());
+        Arrays.sort(player);
+        System.out.println("2." + player.toString());
+        Arrays.stream(player).sorted();
+        System.out.println("3." + player.toString());
 
-        Arrays.sort(player, checker);
+        Arrays.sort(player);
         for(int i = 0; i < player.length; i++){
             System.out.printf("%s %s\n", player[i].name, player[i].score);
         }
